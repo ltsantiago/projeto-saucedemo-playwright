@@ -1,58 +1,60 @@
-import { test, expect } from "@playwright/test";
-const { LoginPage } = require("../pages/LoginPage");
-const { ProductsPage } = require("../pages/ProductsPage");
+const { test, expect } = require('../support')
+const { faker } = require('@faker-js/faker');
 
-let loginPage;
-let productsPage;
 
-test.beforeEach(async ({ page }) => {
-  loginPage = new LoginPage(page);
-  productsPage = new ProductsPage(page);
-});
 
 test.describe("Login", () => {
+
   test("Deve logar como usuário válido", async ({ page }) => {
-    
-    await loginPage.visit();
-    // Preencher usuário e senha
-    await loginPage.submitForm("standard_user", "secret_sauce");
-    // Verificar se o login foi bem-sucedido
-    await productsPage.isLogged();
+    await page.login.visit();
+    await page.login.submitForm("standard_user", "secret_sauce");
+    await page.products.isLogged();
   });
 
-  test("Não Deve logar como e-mail inválido", async ({ page }) => {
-    await loginPage.visit();
-    await loginPage.submitForm("standard_not", "secret_sauce");
+  test("Não Deve logar como usuário inválido", async ({ page }) => {
+    const username = faker.internet.username()
 
-    await loginPage.alertHaveText(
-      "Epic sadface: Username and password do not match any user in this service"
-    );
+    await page.login.visit();
+    await page.login.submitForm(username , "secret_sauce");
+
+    const message =
+      "Epic sadface: Username and password do not match any user in this service";
+    await page.errorMessage.errorHaveText(message);
   });
 
   test("Não Deve logar como senha incorreta", async ({ page }) => {
-    await loginPage.visit();
-    await loginPage.submitForm("standard_user", "secret_saucenot");
 
-    await loginPage.alertHaveText(
-      "Epic sadface: Username and password do not match any user in this service"
-    );
+    const password = faker.internet.password()
+
+    await page.login.visit();
+    await page.login.submitForm("standard_user", password);
+
+    const message =
+      "Epic sadface: Username and password do not match any user in this service";
+    await page.errorMessage.errorHaveText(message);
   });
 
   test("Não Deve logar quando o email não é preenchido", async ({ page }) => {
-    await loginPage.visit();
-    await loginPage.submitForm("", "abc123");
-    await loginPage.alertHaveText("Epic sadface: Username is required");
+    await page.login.visit();
+    await page.login.submitForm("", "secret_sauce");
+
+    const messageErrorUsername = "Epic sadface: Username is required";
+    await page.errorMessage.errorHaveText(messageErrorUsername);
   });
 
   test("Não Deve logar quando  nenhum campo é preenchido", async ({ page }) => {
-    await loginPage.visit();
-    await loginPage.submitForm("", "");
-    await loginPage.alertHaveText("Epic sadface: Username is required");
+    await page.login.visit();
+    await page.login.submitForm("", "");
+
+    const messageErrorUsername = "Epic sadface: Username is required";
+    await page.errorMessage.errorHaveText(messageErrorUsername);
   });
 
   test("Não Deve logar quando a senha não é preenchida", async ({ page }) => {
-    await loginPage.visit();
-    await loginPage.submitForm("standard_user", "");
-    await loginPage.alertHaveText("Epic sadface: Password is required");
+    await page.login.visit();
+    await page.login.submitForm("standard_user", "");
+
+    const messageErrorPassword = "Epic sadface: Password is required";
+    await page.errorMessage.errorHaveText(messageErrorPassword);
   });
 });

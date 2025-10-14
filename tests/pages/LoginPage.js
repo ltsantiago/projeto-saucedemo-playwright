@@ -1,5 +1,6 @@
 import {expect } from "@playwright/test";
 
+
 export class LoginPage {
 
     /**
@@ -20,9 +21,5 @@ export class LoginPage {
         await this.page.locator('[data-test="login-button"]').click()
     }
 
-    
-    async alertHaveText(text){
-        const alert = this.page.locator('[data-test="error"]')
-        await expect(alert).toHaveText(text)
-    }
+ 
 }  
