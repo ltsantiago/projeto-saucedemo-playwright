@@ -1,4 +1,4 @@
-const { test, expect } = require('../support')
+const { test } = require('../support')
 const { faker } = require('@faker-js/faker');
 
 

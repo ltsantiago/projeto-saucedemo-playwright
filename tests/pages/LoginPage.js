@@ -1,5 +1,3 @@
-import {expect } from "@playwright/test";
-
 
 export class LoginPage {
 
@@ -19,6 +17,11 @@ export class LoginPage {
         await this.page.getByPlaceholder('Username').fill(username)
         await this.page.getByPlaceholder('Password').fill(password)
         await this.page.locator('[data-test="login-button"]').click()
+    }
+
+    async doLogin(username,password){
+        this.visit()
+        this.submitForm(username,password)
     }
 
  
