@@ -1,4 +1,8 @@
-
+const elements ={
+    inputPlaceholderName: 'Username',
+    inputPlaceholderPassword: 'Password',
+    buttonLogin: '[data-test="login-button"]'
+}
 export class LoginPage {
 
     /**
@@ -14,9 +18,9 @@ export class LoginPage {
     }
 
     async submitForm(username, password){
-        await this.page.getByPlaceholder('Username').fill(username)
-        await this.page.getByPlaceholder('Password').fill(password)
-        await this.page.locator('[data-test="login-button"]').click()
+        await this.page.getByPlaceholder(elements.inputPlaceholderName).fill(username)
+        await this.page.getByPlaceholder(elements.inputPlaceholderPassword).fill(password)
+        await this.page.locator(elements.buttonLogin).click()
     }
 
     async doLogin(username,password){
