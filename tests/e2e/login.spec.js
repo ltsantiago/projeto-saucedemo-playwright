@@ -1,10 +1,8 @@
-const { test } = require('../support')
-const { faker } = require('@faker-js/faker');
+const { test } = require("../support");
+const { faker } = require("@faker-js/faker");
 
 
-
-test.describe("Login", () => {
-
+test.describe("Login", { tag: "@login" }, () => {
   test("Deve logar como usuário válido", async ({ page }) => {
     await page.login.visit();
     await page.login.submitForm("standard_user", "secret_sauce");
@@ -12,10 +10,10 @@ test.describe("Login", () => {
   });
 
   test("Não Deve logar como usuário inválido", async ({ page }) => {
-    const username = faker.internet.username()
+    const username = faker.internet.username();
 
     await page.login.visit();
-    await page.login.submitForm(username , "secret_sauce");
+    await page.login.submitForm(username, "secret_sauce");
 
     const message =
       "Epic sadface: Username and password do not match any user in this service";
@@ -23,8 +21,7 @@ test.describe("Login", () => {
   });
 
   test("Não Deve logar como senha incorreta", async ({ page }) => {
-
-    const password = faker.internet.password()
+    const password = faker.internet.password();
 
     await page.login.visit();
     await page.login.submitForm("standard_user", password);

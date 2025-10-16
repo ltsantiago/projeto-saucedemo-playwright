@@ -1,6 +1,15 @@
 import { expect } from "@playwright/test";
 
-export class CartPahe {
+export class CartPage {
+  
+ /**
+   * @param {import('playwright').Page} page
+   */
 
+  constructor(page) {
+    this.page = page;
+  }
+
+  
 
 }
