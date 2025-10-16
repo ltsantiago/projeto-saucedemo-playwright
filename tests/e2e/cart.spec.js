@@ -24,6 +24,6 @@ test.describe("Carrinho", { tag: "@cart" }, () => {
     await page.cart.addProductCart();
     await page.cart.redirectShoppingCart();
     await page.cart.validateButtonCheckout()
-    await expect(page).toHaveURL(/checkout-step-one/);
+    await page.cart.validateRedirectionCheckoutInformation()
   });
 });

@@ -6,7 +6,7 @@ test.describe(" Navegar em Produtos E Realizar Filtros", () => {
     await page.products.isLogged();
   });
 
-  test.describe("Filtros", () => {
+  test.describe("Filtros", {tag: '@filter'}, () => {
     test("Deve validar os produtos com filtro opção: A to Z", async ({
       page,
     }) => {
@@ -36,7 +36,7 @@ test.describe(" Navegar em Produtos E Realizar Filtros", () => {
     });
   });
 
-  test.describe("Navegação", () => {
+  test.describe("Navegação", {tag: '@navigation'}, () => {
     test('Deve encontrar o produto: "Sauce Labs Backpack na lista"', async ({
       page,
     }) => {

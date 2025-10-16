@@ -1,4 +1,5 @@
 import { expect } from "@playwright/test";
+import { routes } from "../../lib/utils/routes";
 
 const elements = {
   buttonAddProductBackpack: '[data-test="add-to-cart-sauce-labs-backpack"]',
@@ -47,4 +48,8 @@ export class CartPage {
     await expect(this.page.locator(".cart_item")).toHaveCount(0);
     await expect(this.page.locator(elements.buttonContinueShoopingCart)).toHaveText(text.textContinueShopping);
   }
+
+   async validateRedirectionCheckoutInformation() {
+      await expect(this.page).toHaveURL(routes.checkoutInformation);
+    }
 }

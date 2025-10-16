@@ -1,6 +1,6 @@
 const { test } = require("../support");
 const { faker } = require("@faker-js/faker");
-
+const { Messages } = require("../../lib/utils/messages");
 
 test.describe("Login", { tag: "@login" }, () => {
   test("Deve logar como usuário válido", async ({ page }) => {
@@ -14,10 +14,9 @@ test.describe("Login", { tag: "@login" }, () => {
 
     await page.login.visit();
     await page.login.submitForm(username, "secret_sauce");
-
-    const message =
-      "Epic sadface: Username and password do not match any user in this service";
-    await page.errorMessage.errorHaveText(message);
+    await page.errorMessage.errorHaveText(
+      Messages.LOGIN.required_user_and_password
+    );
   });
 
   test("Não Deve logar como senha incorreta", async ({ page }) => {
@@ -25,33 +24,26 @@ test.describe("Login", { tag: "@login" }, () => {
 
     await page.login.visit();
     await page.login.submitForm("standard_user", password);
-
-    const message =
-      "Epic sadface: Username and password do not match any user in this service";
-    await page.errorMessage.errorHaveText(message);
+    await page.errorMessage.errorHaveText(
+      Messages.LOGIN.required_user_and_password
+    );
   });
 
   test("Não Deve logar quando o email não é preenchido", async ({ page }) => {
     await page.login.visit();
     await page.login.submitForm("", "secret_sauce");
-
-    const messageErrorUsername = "Epic sadface: Username is required";
-    await page.errorMessage.errorHaveText(messageErrorUsername);
+    await page.errorMessage.errorHaveText(Messages.LOGIN.required_userName);
   });
 
   test("Não Deve logar quando  nenhum campo é preenchido", async ({ page }) => {
     await page.login.visit();
     await page.login.submitForm("", "");
-
-    const messageErrorUsername = "Epic sadface: Username is required";
-    await page.errorMessage.errorHaveText(messageErrorUsername);
+    await page.errorMessage.errorHaveText(Messages.LOGIN.required_userName);
   });
 
   test("Não Deve logar quando a senha não é preenchida", async ({ page }) => {
     await page.login.visit();
     await page.login.submitForm("standard_user", "");
-
-    const messageErrorPassword = "Epic sadface: Password is required";
-    await page.errorMessage.errorHaveText(messageErrorPassword);
+    await page.errorMessage.errorHaveText(Messages.LOGIN.required_password);
   });
 });
