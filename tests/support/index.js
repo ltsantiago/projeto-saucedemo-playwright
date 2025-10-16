@@ -4,6 +4,7 @@ import { ProductsPage } from "../pages/ProductsPage";
 import { LoginPage } from "../pages/LoginPage";
 import { MessageError } from "../pages/components/Error";
 import { CartPage } from "../pages/CartPage";
+import { CheckoutPage } from "../pages/CheckoutPage";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -15,6 +16,7 @@ const test = base.extend({
     context["login"] = new LoginPage(page);
     context["errorMessage"] = new MessageError(page);
     context["cart"] = new CartPage(page);
+    context["checkout"] = new CheckoutPage(page);
 
     await use(context);
   },

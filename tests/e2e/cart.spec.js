@@ -9,25 +9,21 @@ test.describe("Carrinho", { tag: "@cart" }, () => {
   test("Deve adicionar um produto com sucesso no carrinho", async ({
     page,
   }) => {
-    await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-    const badge = page.locator(".shopping_cart_badge");
-    await expect(badge).toHaveText("1");
+    await page.cart.addProductCart();
+    await page.cart.checkBadgeCart();
   });
 
   test("Deve remover produto no carrinho", async ({ page }) => {
-    await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-    await page.locator(".shopping_cart_link").click();
-    await page.locator('[data-test="remove-sauce-labs-backpack"]').click();
-    await expect(page.locator(".cart_item")).toHaveCount(0);
-    await expect(page.locator("#continue-shopping")).toHaveText(
-      "Continue Shopping"
-    );
+    await page.cart.addProductCart();
+    await page.cart.redirectShoppingCart();
+    await page.cart.removeButtonProduct();
+    await page.cart.expectRemoveProductCart()
   });
 
   test("Deve Validar fluxo ate página de checkout", async ({ page }) => {
-    await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-    await page.locator(".shopping_cart_link").click();
-    await page.locator('[data-test="checkout"]').click();
+    await page.cart.addProductCart();
+    await page.cart.redirectShoppingCart();
+    await page.cart.validateButtonCheckout()
     await expect(page).toHaveURL(/checkout-step-one/);
   });
 });

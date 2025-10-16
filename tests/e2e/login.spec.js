@@ -5,7 +5,7 @@ const { faker } = require("@faker-js/faker");
 test.describe("Login", { tag: "@login" }, () => {
   test("Deve logar como usuário válido", async ({ page }) => {
     await page.login.visit();
-    await page.login.submitForm("standard_user", "secret_sauce");
+    await page.login.submitForm("standard_use", "secret_sauce");
     await page.products.isLogged();
   });
 
