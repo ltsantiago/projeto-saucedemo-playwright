@@ -1,9 +1,12 @@
 # 🛍️ POC- Saucedemo E2E Test Automation
 
+<img width="1536" height="1000" alt="Image" src="https://github.com/user-attachments/assets/e67711c4-d81a-4cc3-9fb9-26ca83e8b62c" />
+
 [![Playwright](https://img.shields.io/badge/Playwright-2E3440?style=for-the-badge&logo=playwright&logoColor=#2EAD33)](https://playwright.dev/)
 [![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![Yarn](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white)](https://yarnpkg.com/)
+
 
 
 ## 📋 Sobre o Projeto
@@ -18,6 +21,10 @@ Este é um projeto de automação de testes end-to-end (E2E) para o site [SauceD
 - Finalização de compra
 - Validação de fluxos de compra
 - Geração de relatórios de teste
+
+## 📊 Roadmap de Automação
+
+<img width="1300" height="500" alt="Image" src="https://github.com/user-attachments/assets/476d1bac-0e07-454b-ad27-b4de491b22b6" />
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -62,6 +69,10 @@ Para executar todos os testes em modo headless:
 npx playwright test --headed
 ```
 
+Para executar todos os testes em modo de interface do usuário (UI):
+```bash
+npx playwright test --ui
+```
 
 Para executar testes específicos:
 ```bash
@@ -73,17 +84,26 @@ npx playwright test tests/e2e/nome_do_arquivo.spec.ts
 ✅ Integração com **GitHub Actions**  
 ✅ Execução automática a cada push e pull 
 
+✅ Integração com Pipeline CI/CD **GitHub Actions**
+
+<img width="1500" height="400" alt="Image" src="https://github.com/user-attachments/assets/10204738-e0c3-4495-8651-13fc698753ed" />
+
 ## 📊 Relatórios e Evidências
 
 Após a execução dos testes, você pode visualizar os relatórios gerados em:
 - Relatório HTML: `playwright-report/index.html`
 - Screenshots: `test-results/`
 - Vídeos: `test-results/`
-- Tesults: `https://www.tesults.com/results/rsp/view/results/run/258b8563-c54e-40f2-83df-b700e7ba6188-1760647159587-1760650012558`
-- Evidências -`/evidencias` Com videos e Screenshots
+- Evidências -`/evidencias` com videos e screenshots
+- Integração com Tesults - `https://www.tesults.com/results/rsp/view/results/target/258b8563-c54e-40f2-83df-b700e7ba6188-1760647159587`(Precisar realizar login ou criar uma conta)
   
-🔗 Acesse o Tesults
-https://www.tesults.com/results/rsp/view/results/run/258b8563-c54e-40f2-83df-b700e7ba6188-1760647159587-1760650012558
+🔗 Modo de interface do usuário (UI)
+
+https://github.com/user-attachments/assets/216d30a4-b41d-4672-8b7c-f82b1eaa4c90
+
+🔗 Integração com Tesults
+
+<img width="1300" height="400" alt="Image" src="https://github.com/user-attachments/assets/0f1a8780-2d44-4e42-94b6-ab3a02ee0c38" />
 
 
 ## 🏗️ Estrutura do Projeto
@@ -96,7 +116,6 @@ Saucedemo/
 │   ├── pages/                # Page Objects
 │   └── support/              # Utilitários e configurações
 ├── evidencias/                 # Pasta de evidências (vídeos, screenshots etc.)
-│   └── videos/
 ├── .env                      # Variáveis de ambiente
 ├── package.json              # Dependências e scripts
 ├── playwright.config.js      # Configuração do Playwright
