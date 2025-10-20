@@ -1,6 +1,6 @@
 const { test, expect } = require("../support");
 
-test.describe(" Navegar em Produtos E Realizar Filtros", () => {
+test.describe(" Navegar em Produtos E Realizar Filtros", {tag:'@products'}, () => {
   test.beforeEach(async ({ page }) => {
     await page.login.doLogin("standard_user", "secret_sauce");
     await page.products.isLogged();

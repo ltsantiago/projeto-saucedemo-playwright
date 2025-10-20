@@ -18,8 +18,9 @@ exibir_mensagem_boas_vindas() {
 exibir_menu() {
     echo "1. Opção => (1) - Login"
     echo "2. Opção => (2) - Carrinho"
-    echo "3. Opção => (3) - Checkout"
-    echo "4. Sair da Aplicação"
+    echo "3. Opção => (3) - Produtos"
+    echo "4. Opção => (4) - Checkout"
+    echo "5. Sair da Aplicação"
 }
 
 # Função para ler a opção selecionada pelo usuário
@@ -40,18 +41,27 @@ while true; do
     case $opcao in
         1)
             echo "Você selecionou a Opção 1 - Executando Suite de Login"
-            testcaselogin=`npx playwright test`
+            testcaselogin=` npx playwright test --grep "@login"`
             echo "$testcaselogin"
             ;;
         2)
             echo "Você selecionou a Opção 2 - Executando Suite do Carrinho"
-            testcasecart=`npx playwright test`
+            testcasecart=` npx playwright test --grep "@cart"`
             echo "$testcasecart"
             ;;
         3)
-            echo "Você selecionou a Opção 3"
+            echo "Você selecionou a Opção 3 - Executando Suite de Produtos"
+            testcaseproducts=` npx playwright test --grep "@products"`
+            echo "$testcaseproducts"
             ;;
+
         4)
+            echo "Você selecionou a Opção 4 - Executando Suite de Checkout"
+            testcasecheckout=` npx playwright test --grep "@checkout"`
+            echo "$testcasecheckout"
+            ;;
+        
+        5)
             echo "Saindo do script..."
             exit 0
             ;;
