@@ -11,7 +11,7 @@
 
 ## 📋 Sobre o Projeto
 
-Este é um projeto de automação de testes end-to-end (E2E) para o site [SauceDemo](https://www.saucedemo.com/), desenvolvido como parte de um teste técnico. A automação foi implementada utilizando Playwright, uma ferramenta moderna de automação de testes que oferece suporte a múltiplos navegadores.
+Este é um projeto de automação de testes end-to-end (E2E) para o site [SauceDemo](https://www.saucedemo.com/), desenvolvido como parte de um portfólio. A automação foi implementada utilizando Playwright, uma ferramenta moderna de automação de testes que oferece suporte a múltiplos navegadores.
 
 ## ✨ Funcionalidades
 
