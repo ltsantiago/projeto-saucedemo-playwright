@@ -79,6 +79,20 @@ Para executar testes específicos:
 npx playwright test tests/e2e/nome_do_arquivo.spec.ts
 ```
 
+Para executar com Arquivo start.sh
+
+```bash
+
+Vc vai na pasta em que vc baixou esse meu projeto. E roda:
+
+1- chmod +x start.sh - Linux 
+
+2- Se tiver Windows e tiver o Git Bash instalado só rodar:
+
+./start.sh
+
+```
+
 ## 🔄 Pipeline CI/CD
 
 ✅ Integração com **GitHub Actions**  
